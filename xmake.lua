@@ -11,8 +11,9 @@ add_cxxflags("/Zc:__cplusplus", {tools = {"msvc", "cl"}}) -- fix bx/platform.h _
 add_rules("mode.debug", "mode.release")
 add_rules("plugin.vsxmake.autoupdate")
 
--- add my own xmake-repo
-add_repositories("my-repo git@github.com:zzxzzk115/xmake-repo.git dev")
+-- add my own xmake-repo, I added support for Raspberry Pi and Emscripten.
+-- you can use your own xmake-repo too.
+add_repositories("my-repo https://github.com/zzxzzk115/xmake-repo.git dev")
 
 -- include sub directories
 includes("Source/3rdParty")

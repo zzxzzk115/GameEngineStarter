@@ -14,8 +14,9 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Install dependencies
-        run: brew install xmake
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
 
       - name: Build
-        run: xmake
+        run: xmake -v -y

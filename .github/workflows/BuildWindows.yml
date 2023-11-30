@@ -14,10 +14,9 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Install dependencies
-        shell: pwsh
-        run: Invoke-Expression (Invoke-Webrequest 'https://xmake.io/psget.text' -UseBasicParsing).Content
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
 
       - name: Build
-        shell: pwsh
-        run: xmake
+        run: xmake -v -y

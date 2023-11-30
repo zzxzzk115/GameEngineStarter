@@ -1,0 +1,21 @@
+name: Build macOS
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Install dependencies
+        run: brew install xmake
+
+      - name: Build
+        run: xmake

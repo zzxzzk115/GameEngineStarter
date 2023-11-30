@@ -1,8 +1,27 @@
 # GameEngineStarter
 
-A minimal C++ game engine starter project.
+<h4 align="center">
+  <strong>GameEngineStarter</strong> is a minimal C++ game engine starter project. 
+</h4>
 
-Have fun and for free to use this template to make you own game engine!
+<p align="center">
+    <a href="https://github.com/zzxzzk115/GameEngineStarter/actions" alt="CI-Windows">
+        <img src="https://img.shields.io/github/actions/workflow/status/zzxzzk115/GameEngineStarter/BuildWindows.yml?branch=master&label=CI-Windows&logo=github" /></a>
+    <a href="https://github.com/zzxzzk115/GameEngineStarter/actions" alt="CI-Linux">
+        <img src="https://img.shields.io/github/actions/workflow/status/zzxzzk115/GameEngineStarter/BuildLinux.yml?branch=master&label=CI-Linux&logo=github" /></a>
+    <a href="https://github.com/zzxzzk115/GameEngineStarter/actions" alt="CI-MacOS">
+        <img src="https://img.shields.io/github/actions/workflow/status/zzxzzk115/GameEngineStarter/BuildMacOS.yml?branch=master&label=CI-MacOS&logo=github" /></a>
+    <a href="https://github.com/zzxzzk115/GameEngineStarter/issues" alt="GitHub Issues">
+        <img src="https://img.shields.io/github/issues/zzxzzk115/GameEngineStarter">
+    </a>
+    <a href="https://github.com/zzxzzk115/GameEngineStarter/blob/master/LICENSE" alt="GitHub">
+        <img src="https://img.shields.io/github/license/zzxzzk115/GameEngineStarter">
+    </a>
+</p>
+
+<div align="center">
+  Have fun and for free to use this template to make you own game engine!
+</div>
 
 ## Features
 

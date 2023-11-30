@@ -1,0 +1,22 @@
+name: Build Linux
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Install dependencies
+        run: curl -fsSL https://xmake.io/shget.text | bash &&
+             source ~/.bashrc &&
+             sudo apt-get install build-essential cmake git clang libx11-dev libxrandr-dev libxrender-dev libglvnd-dev libxinerama-dev libxcursor-dev libxi-dev
+      - name: Build
+        run: xmake

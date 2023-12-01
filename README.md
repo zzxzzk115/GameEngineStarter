@@ -20,7 +20,7 @@
 </p>
 
 <div align="center">
-  Have fun and for free to use this template to make you own game engine!
+  Have fun and for free use this template to make your game engine!
 </div>
 
 ## Features

@@ -14,11 +14,7 @@
 #include "SomeEngineRuntime/Core/Event/ApplicationEvent.h"
 #include "SomeEngineRuntime/Core/Event/KeyEvent.h"
 #include "SomeEngineRuntime/Core/Event/MouseEvent.h"
-
-// TODO: Dirty code, try to move later
-#if SOME_ENGINE_GUI_IMPL_IMGUI
-#include <imgui_impl_sdl2.h>
-#endif
+#include "SomeEngineRuntime/Core/Event/SDL2Event.h"
 
 namespace SomeEngineRuntime
 {
@@ -83,10 +79,9 @@ namespace SomeEngineRuntime
         SDL_Event e;
         while (SDL_PollEvent(&e))
         {
-// TODO: Dirty code, try to move later
-#if SOME_ENGINE_GUI_IMPL_IMGUI
-            ImGui_ImplSDL2_ProcessEvent(&e);
-#endif
+            // Dispatch SDL2 events for other systems (e.g. imgui)
+            SDL2Event sdl2Event(&e);
+            m_Data.EventCallback(sdl2Event);
 
             switch (e.type)
             {

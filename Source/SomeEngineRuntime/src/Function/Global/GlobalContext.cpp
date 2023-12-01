@@ -63,6 +63,9 @@ namespace SomeEngineRuntime
 
     void RuntimeGlobalContext::ShutdownSystems()
     {
+        GUISys->Shutdown();
+        GUISys.reset();
+
         RenderSys->Shutdown();
         RenderSys.reset();
 

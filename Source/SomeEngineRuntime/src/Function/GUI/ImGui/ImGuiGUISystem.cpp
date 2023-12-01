@@ -17,6 +17,7 @@
 #include "SomeEngineRuntime/Platform/WindowAbstract/GLFW/GLFWWindowSystem.h"
 #include <imgui_impl_glfw.h>
 #elif SOME_ENGINE_WINDOW_ABSTRACT_SDL
+#include "SomeEngineRuntime/Core/Event/SDL2Event.h"
 #include "SomeEngineRuntime/Platform/WindowAbstract/SDL/SDLWindowSystem.h"
 #include <imgui_impl_sdl2.h>
 #endif
@@ -86,6 +87,16 @@ namespace SomeEngineRuntime
 
     void ImGuiGUISystem::OnEvent(Event& e)
     {
+        // handle for SDL2 events
+#if SOME_ENGINE_WINDOW_ABSTRACT_SDL
+        if (e.GetEventType() == EventType::SDL2Event)
+        {
+            auto sdl2Event = static_cast<SDL2Event&>(e);
+            ImGui_ImplSDL2_ProcessEvent(sdl2Event.Get());
+            e.Handled = true;
+            return;
+        }
+#endif
         if (m_IsBlockEvents)
         {
             ImGuiIO& io = ImGui::GetIO();

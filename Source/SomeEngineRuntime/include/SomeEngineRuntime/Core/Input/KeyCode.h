@@ -19,9 +19,10 @@ namespace SomeEngineRuntime
 
     namespace Key
     {
+        #if SOME_ENGINE_WINDOW_ABSTRACT_GLFW
+        // GLFW keycodes
         enum : KeyCode
         {
-            // From glfw3.h
             Space      = 32,
             Apostrophe = 39, /* ' */
             Comma      = 44, /* , */
@@ -153,5 +154,140 @@ namespace SomeEngineRuntime
             RightSuper   = 347,
             Menu         = 348
         };
+
+        #elif SOME_ENGINE_WINDOW_ABSTRACT_SDL
+        // SDL2 keycodes
+        enum : KeyCode
+        {
+            Space      = 32,
+            Apostrophe = 39,
+            Comma      = 44,
+            Minus      = 45,
+            Period     = 46,
+            Slash      = 47,
+
+            D0 = 48,
+            D1 = 49,
+            D2 = 50,
+            D3 = 51,
+            D4 = 52,
+            D5 = 53,
+            D6 = 54,
+            D7 = 55,
+            D8 = 56,
+            D9 = 57,
+
+            Semicolon = 59,
+            Equal     = 61,
+
+            A = 97,
+            B = 98,
+            C = 99,
+            D = 100,
+            E = 101,
+            F = 102,
+            G = 103,
+            H = 104,
+            I = 105,
+            J = 106,
+            K = 107,
+            L = 108,
+            M = 109,
+            N = 110,
+            O = 111,
+            P = 112,
+            Q = 113,
+            R = 114,
+            S = 115,
+            T = 116,
+            U = 117,
+            V = 118,
+            W = 119,
+            X = 120,
+            Y = 121,
+            Z = 122,
+
+            LeftBracket  = 91,
+            Backslash    = 92,
+            RightBracket = 93,
+            GraveAccent  = 96,
+
+            World1 = 161,
+            World2 = 162,
+
+            Escape      = 27,
+            Enter       = 13,
+            Tab         = 9,
+            Backspace   = 8,
+            Insert      = 277,
+            Delete      = 127,
+            Right       = 275,
+            Left        = 276,
+            Down        = 274,
+            Up          = 273,
+            PageUp      = 280,
+            PageDown    = 281,
+            Home        = 278,
+            End         = 279,
+            CapsLock    = 301,
+            ScrollLock  = 302,
+            NumLock     = 300,
+            PrintScreen = 283,
+            Pause       = 19,
+            F1          = 282,
+            F2          = 283,
+            F3          = 284,
+            F4          = 285,
+            F5          = 286,
+            F6          = 287,
+            F7          = 288,
+            F8          = 289,
+            F9          = 290,
+            F10         = 291,
+            F11         = 292,
+            F12         = 293,
+            F13         = 294,
+            F14         = 295,
+            F15         = 296,
+            F16         = 297,
+            F17         = 298,
+            F18         = 299,
+            F19         = 300,
+            F20         = 301,
+            F21         = 302,
+            F22         = 303,
+            F23         = 304,
+            F24         = 305,
+            F25         = 306,
+
+            KP0        = 256,
+            KP1        = 257,
+            KP2        = 258,
+            KP3        = 259,
+            KP4        = 260,
+            KP5        = 261,
+            KP6        = 262,
+            KP7        = 263,
+            KP8        = 264,
+            KP9        = 265,
+            KPDecimal  = 266,
+            KPDivide   = 267,
+            KPMultiply = 268,
+            KPSubtract = 269,
+            KPAdd      = 270,
+            KPEnter    = 271,
+            KPEqual    = 272,
+
+            LeftShift    = 304,
+            LeftControl  = 306,
+            LeftAlt      = 308,
+            LeftSuper    = 310,
+            RightShift   = 305,
+            RightControl = 307,
+            RightAlt     = 309,
+            RightSuper   = 311,
+            Menu         = 319
+        };
+        #endif
     }
 } // namespace SomeEngineRuntime

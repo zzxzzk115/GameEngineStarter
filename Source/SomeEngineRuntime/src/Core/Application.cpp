@@ -101,6 +101,8 @@ namespace SomeEngineRuntime
         dispatcher.Dispatch<WindowCloseEvent>(SOME_ENGINE_BIND_EVENT_FN(Application::OnWindowClose));
         dispatcher.Dispatch<WindowResizeEvent>(SOME_ENGINE_BIND_EVENT_FN(Application::OnWindowResize));
 
+        g_RuntimeGlobalContext.GUISys->OnEvent(e);
+
         m_CustomModuleManager.ForEachIf([&e](Ref<CustomModule> module) { module->OnEvent(e); },
                                         [&e](Ref<CustomModule> module) { return !e.Handled; });
     }

@@ -19,9 +19,10 @@ namespace SomeEngineRuntime
 
     namespace Mouse
     {
+        #if SOME_ENGINE_WINDOW_ABSTRACT_GLFW
+        // GLFW mouse button codes
         enum : MouseCode
         {
-            // From glfw3.h
             Button_0 = 0,
             Button_1 = 1,
             Button_2 = 2,
@@ -36,5 +37,25 @@ namespace SomeEngineRuntime
             ButtonRight  = Button_1,
             ButtonMiddle = Button_2
         };
+
+        #elif SOME_ENGINE_WINDOW_ABSTRACT_SDL
+        // SDL2 mouse button codes
+        enum : MouseCode
+        {
+            Button_0 = 1,
+            Button_1 = 2,
+            Button_2 = 3,
+            Button_3 = 4,
+            Button_4 = 5,
+            Button_5 = 6,
+            Button_6 = 7,
+            Button_7 = 8,
+
+            ButtonLast   = Button_7,
+            ButtonLeft   = Button_1,
+            ButtonRight  = Button_3,
+            ButtonMiddle = Button_2
+        };
+        #endif
     }
 } // namespace SomeEngineRuntime

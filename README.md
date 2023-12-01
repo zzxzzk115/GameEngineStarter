@@ -80,7 +80,8 @@ TODO
 
 ### Emscripten
 
-TODO
+- Install Xmake as above.
+- Install Emscripten by following official documentation.
 
 ## Build Engine
 
@@ -92,7 +93,7 @@ git clone git@github.com:zzxzzk115/GameEngineStarter.git --recursive
 
 ### Build on Windows
 
-In CMD or Powershell, at the project root directory, execute `xmake`.
+In CMD or Powershell, at the project root directory, execute `xmake -v -y`.
 
 Or simply double click `xmake_windows.bat`.
 
@@ -100,7 +101,14 @@ Or simply double click `xmake_windows.bat`.
 
 ```bash
 cd GameEngineStarter/
-xmake
+xmake -v -y
+```
+
+### Build for Emscripten
+
+```bash
+xmake f -p wasm
+xmake -v -y
 ```
 
 ### Build Options

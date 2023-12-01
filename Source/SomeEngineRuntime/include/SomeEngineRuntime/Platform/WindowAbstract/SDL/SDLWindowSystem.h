@@ -52,6 +52,7 @@ namespace SomeEngineRuntime
 
         virtual void* GetNativeWindow() const override
         {
+#if SOME_ENGINE_PLATFORM_DESKTOP
             SDL_SysWMinfo wmInfo;
             SDL_VERSION(&wmInfo.version);
             SDL_GetWindowWMInfo(m_Window, &wmInfo);
@@ -61,6 +62,10 @@ namespace SomeEngineRuntime
             return wmInfo.info.x11.window;
 #elif SOME_ENGINE_PLATFORM_DARWIN
             return wmInfo.info.cocoa.window;
+#else
+            SOME_ENGINE_CORE_ERROR("[SDLWindowSystem] Unsupported Platform, failed to get the native window handle!");
+            return nullptr;
+#endif
 #else
             SOME_ENGINE_CORE_ERROR("[SDLWindowSystem] Unsupported Platform, failed to get the native window handle!");
             return nullptr;

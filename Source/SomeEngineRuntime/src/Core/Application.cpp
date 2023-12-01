@@ -26,6 +26,9 @@
 #if SOME_ENGINE_GUI_IMPL_IMGUI
 #include "SomeEngineRuntime/Function/GUI/ImGui/ImGuiGUISystem.h"
 #endif
+#if SOME_ENGINE_PLATFORM_EMSCRIPTEN
+#include "SomeEngineRuntime/Platform/Emscripten/EmscriptenStub.h"
+#endif
 
 namespace SomeEngineRuntime
 {
@@ -57,7 +60,11 @@ namespace SomeEngineRuntime
     {
         SOME_ENGINE_CORE_INFO("[Application] Running...");
 
+#if SOME_ENGINE_PLATFORM_EMSCRIPTEN
+        EMSCRIPTEN_MAINLOOP_BEGIN
+#else
         while (m_IsRunning)
+#endif
         {
             // calculate delta time by using std::chrono
             auto currentTime = std::chrono::high_resolution_clock::now();
@@ -67,7 +74,11 @@ namespace SomeEngineRuntime
             // update window system
             if (!g_RuntimeGlobalContext.WindowSys->OnUpdate())
             {
+#if SOME_ENGINE_PLATFORM_EMSCRIPTEN
+                return;
+#else
                 break;
+#endif
             }
 
             if (!m_IsMinimized)
@@ -88,6 +99,9 @@ namespace SomeEngineRuntime
             // render present
             g_RuntimeGlobalContext.RenderSys->Present();
         }
+#if SOME_ENGINE_PLATFORM_EMSCRIPTEN
+    EMSCRIPTEN_MAINLOOP_END;
+#endif
 
         SOME_ENGINE_CORE_INFO("[Application] Exited main loop");
     }

@@ -19,4 +19,5 @@ jobs:
           xmake-version: latest
 
       - name: Build
-        run: xmake -v -y
+        shell: pwsh
+        run: cd Engine; xmake -v -y

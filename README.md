@@ -85,31 +85,50 @@ TODO
 
 ## Build Engine
 
-Clone this repo first:
+Clone this repo and go to the root directory first:
 
 ```bash
 git clone git@github.com:zzxzzk115/GameEngineStarter.git --recursive
+cd GameEngineStarter
 ```
 
 ### Build on Windows
 
-In CMD or Powershell, at the project root directory, execute `xmake -v -y`.
+In CMD or Powershell, at the `Engine` directory, execute `xmake -v -y`.
 
 Or simply double click `xmake_windows.bat`.
 
 ### Build on macOS / Linux
 
 ```bash
-cd GameEngineStarter/
+cd Engine
 xmake -v -y
 ```
 
 ### Build for Emscripten
 
 ```bash
+cd Engine
 xmake f -p wasm
 xmake -v -y
 ```
+
+### Build for Android (WIP)
+
+Currently, I made a demo that shows how to use xmake to build an Android Native project by using [GameActivity](https://developer.android.com/games/agdk/game-activity) and [xmake-gradle](https://github.com/xmake-io/xmake-gradle).
+
+After organizing code structures, I will update the engine for Android.
+
+Now you can build an Android demo by executing the:
+
+```bash
+cd Platform/Android/AndroidApp/android
+./gradlew app:assembleDebug
+```
+
+You may have to set the `JAVA_HOME` system environment.
+
+The generated APK file will be at `Platform/Android/AndroidApp/android/app/build/outputs/apk/{mode}`
 
 ### Build Options
 
@@ -153,11 +172,13 @@ xmake run Playground
 For example, debug `Playground`:
 
 ```bash
+cd Engine
 xmake f -m debug # Switch to debug mode
 
 # Switch to release mode:
 # xmake f -m release
 
+xmake -v -y
 xmake run Playground
 ```
 

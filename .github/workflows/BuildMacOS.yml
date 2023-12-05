@@ -19,4 +19,4 @@ jobs:
           xmake-version: latest
 
       - name: Build
-        run: cd Engine && xmake -v -y
+        run: cd Source && xmake -v -y

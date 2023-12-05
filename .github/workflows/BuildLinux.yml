@@ -22,4 +22,4 @@ jobs:
         run: sudo apt-get install build-essential cmake git clang libx11-dev libxrandr-dev libxrender-dev libglvnd-dev libxinerama-dev libxcursor-dev libxi-dev
 
       - name: Build
-        run: cd Engine && xmake -v -y
+        run: cd Source && xmake -v -y

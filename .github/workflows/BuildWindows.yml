@@ -20,4 +20,4 @@ jobs:
 
       - name: Build
         shell: pwsh
-        run: cd Engine; xmake -v -y
+        run: cd Source; xmake -v -y

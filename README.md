@@ -94,21 +94,21 @@ cd GameEngineStarter
 
 ### Build on Windows
 
-In CMD or Powershell, at the `Engine` directory, execute `xmake -v -y`.
+In CMD or Powershell, at the `Source` directory, execute `xmake -v -y`.
 
 Or simply double click `xmake_windows.bat`.
 
 ### Build on macOS / Linux
 
 ```bash
-cd Engine
+cd Source
 xmake -v -y
 ```
 
 ### Build for Emscripten
 
 ```bash
-cd Engine
+cd Source
 xmake f -p wasm
 xmake -v -y
 ```
@@ -122,13 +122,13 @@ After organizing code structures, I will update the engine for Android.
 Now you can build an Android demo by executing the:
 
 ```bash
-cd Platform/Android/AndroidApp/android
+cd GameTemplate/Android/android
 ./gradlew app:assembleDebug
 ```
 
 You may have to set the `JAVA_HOME` system environment.
 
-The generated APK file will be at `Platform/Android/AndroidApp/android/app/build/outputs/apk/{mode}`
+The generated APK file will be at `GameTemplate/Android/android/app/build/outputs/apk/{mode}`
 
 ### Build Options
 
@@ -172,7 +172,7 @@ xmake run Playground
 For example, debug `Playground`:
 
 ```bash
-cd Engine
+cd Source
 xmake f -m debug # Switch to debug mode
 
 # Switch to release mode:

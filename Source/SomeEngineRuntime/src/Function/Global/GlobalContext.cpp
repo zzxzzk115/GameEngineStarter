@@ -54,7 +54,7 @@ namespace SomeEngineRuntime
         windowSystemInitInfo.Width                = initInfo.WindowWidth;
         windowSystemInitInfo.Height               = initInfo.WindowHeight;
 #if SOME_ENGINE_PLATFORM_ANDROID
-        windowSystemInitInfo.NativeWindow = static_cast<struct android_app*>(initInfo.NativeApp)->window;
+        windowSystemInitInfo.NativeApp = static_cast<struct android_app*>(initInfo.NativeApp);
 #endif
         WindowSys->Init(windowSystemInitInfo);
 

@@ -21,6 +21,7 @@
 #include "SomeEngineRuntime/Platform/WindowAbstract/SDL/SDLWindowSystem.h"
 #include <imgui_impl_sdl2.h>
 #elif SOME_ENGINE_WINDOW_ABSTRACT_EGL
+#include "SomeEngineRuntime/Core/Event/MouseEvent.h"
 #include "SomeEngineRuntime/Platform/WindowAbstract/EGL/EGLWindowSystem.h"
 #include <imgui_impl_android.h>
 #endif
@@ -121,6 +122,28 @@ namespace SomeEngineRuntime
             ImGui_ImplSDL2_ProcessEvent(sdl2Event.Get());
             e.Handled = true;
             return;
+        }
+#elif SOME_ENGINE_WINDOW_ABSTRACT_EGL
+        ImGuiIO& io = ImGui::GetIO();
+
+        // MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+        switch (e.GetEventType())
+        {
+            case EventType::MouseButtonPressed: {
+                io.AddMouseButtonEvent(0, true);
+            }
+            break;
+            case EventType::MouseButtonReleased: {
+                io.AddMouseButtonEvent(0, false);
+            }
+            break;
+            case EventType::MouseMoved: {
+                auto mouseMovedEvent = static_cast<MouseMovedEvent&>(e);
+                io.AddMousePosEvent(mouseMovedEvent.GetX(), mouseMovedEvent.GetY());
+            }
+            break;
+            default:
+                break;
         }
 #endif
         if (m_IsBlockEvents)

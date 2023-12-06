@@ -24,4 +24,6 @@ TODO
 
 ## Android
 
-![Android EGL OpenGL](./Android_EGL_OpenGL.png)
+![Android EGL OpenGL Run on my POCO Phone](./Android_EGL_OpenGL.gif)
+
+> It's an example running on my POCO X5.

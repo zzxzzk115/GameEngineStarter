@@ -14,6 +14,8 @@
 #include "SomeEngineRuntime/Core/Event/Event.h"
 #include "SomeEngineRuntime/Core/Input/MouseCode.h"
 
+#include <sstream>
+
 namespace SomeEngineRuntime
 {
     class MouseMovedEvent : public Event

@@ -15,6 +15,9 @@
 
 #include <EGL/egl.h>
 
+#include <game-activity/GameActivity.h>
+#include <game-activity/native_app_glue/android_native_app_glue.h>
+
 namespace SomeEngineRuntime
 {
     class EGLWindowSystem : public WindowSystem
@@ -43,6 +46,10 @@ namespace SomeEngineRuntime
         virtual void* GetNativeWindow() const override { return m_Window; }
 
     private:
+        void HandleInput();
+        void HandleMotionEvent(GameActivityMotionEvent& motionEvent);
+
+    private:
         struct WindowData
         {
             std::string  Title;
@@ -56,6 +63,8 @@ namespace SomeEngineRuntime
         EGLDisplay          m_Display = EGL_NO_DISPLAY;
         EGLSurface          m_Surface = EGL_NO_SURFACE;
         EGLContext          m_Context = EGL_NO_CONTEXT;
+
+        struct android_app* m_NativeApp = nullptr;
 
         WindowData m_Data;
     };

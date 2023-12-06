@@ -25,14 +25,13 @@ namespace SomeEngineRuntime
         uint32_t    Width;
         uint32_t    Height;
         bool        VSync;
-        void*       NativeApp; // handle for android
 
         WindowSystemInitInfo(const std::string& title  = "SomeEngine",
                        uint32_t           width  = 1024,
                        uint32_t           height = 768,
                        bool               vsync  = true) :
             Title(title),
-            Width(width), Height(height), VSync(vsync), NativeApp(nullptr)
+            Width(width), Height(height), VSync(vsync)
         {}
     };
 

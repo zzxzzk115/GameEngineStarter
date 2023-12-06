@@ -12,6 +12,11 @@
 #pragma once
 
 #include "SomeEngineRuntime/Core/Base.h"
+#include "SomeEngineRuntime/Platform/Platform.h"
+
+#if SOME_ENGINE_PLATFORM_ANDROID
+#include <game-activity/native_app_glue/android_native_app_glue.h>
+#endif
 
 #include <string>
 
@@ -36,6 +41,11 @@ namespace SomeEngineRuntime
         Ref<WindowSystem> WindowSys;
         Ref<RenderSystem> RenderSys;
         Ref<GUISystem>    GUISys;
+#if SOME_ENGINE_PLATFORM_ANDROID
+        struct android_app* NativeApp;
+#else
+        void* NativeApp;
+#endif
 
     public:
         void StartSystems(RuntimeGlobalContextInitInfo initInfo);

@@ -10,6 +10,7 @@
  */
 
 #include "SomeEngineRuntime/Platform/WindowAbstract/EGL/EGLWindowSystem.h"
+#include "SomeEngineRuntime/Function/Global/GlobalContext.h"
 #include "SomeEngineRuntime/Core/Event/ApplicationEvent.h"
 #include "SomeEngineRuntime/Core/Event/MouseEvent.h"
 #include "SomeEngineRuntime/Platform/Android/AndroidOut.h"
@@ -21,7 +22,7 @@ namespace SomeEngineRuntime
         m_Data.Title  = initInfo.Title;
         m_Data.Width  = -1; // set to -1 because we have to query
         m_Data.Height = -1; // set to -1 because we have to query
-        m_NativeApp   = static_cast<struct android_app*>(initInfo.NativeApp);
+        m_NativeApp   = g_RuntimeGlobalContext.NativeApp;
         m_Window      = static_cast<EGLNativeWindowType>(m_NativeApp->window);
 
         SOME_ENGINE_CORE_INFO("[EGLWindowSystem] Creating window, name: {0}, resolution: {1} x {2}",

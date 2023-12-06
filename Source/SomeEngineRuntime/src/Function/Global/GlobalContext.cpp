@@ -41,6 +41,12 @@ namespace SomeEngineRuntime
 
     void RuntimeGlobalContext::StartSystems(RuntimeGlobalContextInitInfo initInfo)
     {
+#if SOME_ENGINE_PLATFORM_ANDROID
+        NativeApp = static_cast<struct android_app*>(initInfo.NativeApp);
+#else
+        NativeApp = nullptr;
+#endif
+
         LoggerSys = CreateRef<LoggerSystem>();
 #if SOME_ENGINE_WINDOW_ABSTRACT_GLFW
         WindowSys = CreateRef<GLFWWindowSystem>();
@@ -53,9 +59,6 @@ namespace SomeEngineRuntime
         windowSystemInitInfo.Title                = initInfo.AppName;
         windowSystemInitInfo.Width                = initInfo.WindowWidth;
         windowSystemInitInfo.Height               = initInfo.WindowHeight;
-#if SOME_ENGINE_PLATFORM_ANDROID
-        windowSystemInitInfo.NativeApp = static_cast<struct android_app*>(initInfo.NativeApp);
-#endif
         WindowSys->Init(windowSystemInitInfo);
 
 #if SOME_ENGINE_RENDER_API_OPENGL

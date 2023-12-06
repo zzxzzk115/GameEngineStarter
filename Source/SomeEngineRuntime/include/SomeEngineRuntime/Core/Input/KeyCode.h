@@ -19,7 +19,7 @@ namespace SomeEngineRuntime
 
     namespace Key
     {
-        #if SOME_ENGINE_WINDOW_ABSTRACT_GLFW
+#if SOME_ENGINE_WINDOW_ABSTRACT_GLFW
         // GLFW keycodes
         enum : KeyCode
         {
@@ -155,7 +155,7 @@ namespace SomeEngineRuntime
             Menu         = 348
         };
 
-        #elif SOME_ENGINE_WINDOW_ABSTRACT_SDL
+#elif SOME_ENGINE_WINDOW_ABSTRACT_SDL
         // SDL2 keycodes
         enum : KeyCode
         {
@@ -288,6 +288,6 @@ namespace SomeEngineRuntime
             RightSuper   = 311,
             Menu         = 319
         };
-        #endif
-    }
+#endif
+    } // namespace Key
 } // namespace SomeEngineRuntime

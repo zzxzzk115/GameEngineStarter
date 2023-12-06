@@ -10,9 +10,10 @@
  */
 
 #include "SomeEngineRuntime/Platform/WindowAbstract/EGL/EGLWindowSystem.h"
-#include "SomeEngineRuntime/Function/Global/GlobalContext.h"
 #include "SomeEngineRuntime/Core/Event/ApplicationEvent.h"
+#include "SomeEngineRuntime/Core/Event/AndroidKeyEvent.h"
 #include "SomeEngineRuntime/Core/Event/MouseEvent.h"
+#include "SomeEngineRuntime/Function/Global/GlobalContext.h"
 #include "SomeEngineRuntime/Platform/Android/AndroidOut.h"
 
 namespace SomeEngineRuntime
@@ -169,14 +170,22 @@ namespace SomeEngineRuntime
         {
             auto& keyEvent = inputBuffer->keyEvents[i];
             aout << "Key: " << keyEvent.keyCode << " ";
+
+            AndroidKeyEvent androidKeyEvent(&keyEvent);
+            m_Data.EventCallback(androidKeyEvent);
+
             switch (keyEvent.action)
             {
-                case AKEY_EVENT_ACTION_DOWN:
+                case AKEY_EVENT_ACTION_DOWN: {
                     aout << "Key Down";
                     break;
-                case AKEY_EVENT_ACTION_UP:
+                }
+
+                case AKEY_EVENT_ACTION_UP: {
                     aout << "Key Up";
                     break;
+                }
+
                 case AKEY_EVENT_ACTION_MULTIPLE:
                     // Deprecated since Android API level 29.
                     aout << "Multiple Key Actions";
@@ -203,8 +212,8 @@ namespace SomeEngineRuntime
         auto  x       = GameActivityPointerAxes_getX(&pointer);
         auto  y       = GameActivityPointerAxes_getY(&pointer);
 
-        MouseMovedEvent mouseMovedEvent(x, y);
-        MouseButtonPressedEvent mouseButtonPressedEvent(0);
+        MouseMovedEvent          mouseMovedEvent(x, y);
+        MouseButtonPressedEvent  mouseButtonPressedEvent(0);
         MouseButtonReleasedEvent mouseButtonReleasedEvent(0);
 
         // determine the action type and process the event accordingly.

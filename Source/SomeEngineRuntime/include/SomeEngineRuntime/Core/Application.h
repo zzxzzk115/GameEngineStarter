@@ -19,7 +19,9 @@
 #include <cstdint>
 #include <string>
 
+#if SOME_ENGINE_PLATFORM_ANDROID
 struct android_app;
+#endif
 
 namespace SomeEngineRuntime
 {
@@ -44,7 +46,7 @@ namespace SomeEngineRuntime
 
         virtual void AddCustomModule(Ref<CustomModule> module);
 
-    protected:
+        protected:
         virtual bool OnWindowClose(WindowCloseEvent& e);
         virtual bool OnWindowResize(WindowResizeEvent& e);
 

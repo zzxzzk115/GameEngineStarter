@@ -32,9 +32,9 @@ namespace SomeEngineRuntime
             return "SDL2Event";
         }
 
-        EVENT_CLASS_TYPE(SDL2Event)
+        EVENT_CLASS_TYPE(SDL2)
 
-        EVENT_CLASS_CATEGORY(EventCategoryWindowImpl)
+        EVENT_CLASS_CATEGORY(EventCategoryPlatform)
 
     private:
         SDL_Event* m_Event;

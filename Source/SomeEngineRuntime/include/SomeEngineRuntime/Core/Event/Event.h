@@ -34,7 +34,8 @@ namespace SomeEngineRuntime
         MouseButtonReleased,
         MouseMoved,
         MouseScrolled,
-        SDL2Event // handle for SDL2
+        SDL2, // handle for SDL2
+        AndroidKey // handle for Android
     };
 
     enum EventCategory
@@ -45,7 +46,7 @@ namespace SomeEngineRuntime
         EventCategoryKeyboard    = BIT(2),
         EventCategoryMouse       = BIT(3),
         EventCategoryMouseButton = BIT(4),
-        EventCategoryWindowImpl  = BIT(5)
+        EventCategoryPlatform    = BIT(5)
     };
 
 #define EVENT_CLASS_TYPE(type) \

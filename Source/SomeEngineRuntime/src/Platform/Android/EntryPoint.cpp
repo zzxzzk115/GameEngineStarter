@@ -22,6 +22,16 @@ extern "C"
 
 #include <game-activity/native_app_glue/android_native_app_glue.c>
 
+    void GameTextInputGetStateCB(void* ctx, const struct GameTextInputState* state)
+    {
+        auto engineApp = reinterpret_cast<SomeEngineRuntime::Application*>(ctx);
+        if (!engineApp || !state)
+            return;
+
+        // Process the text event(s).
+        LOGI("UserInputText: %s", state->text_UTF8);
+    }
+
     /*!
      * Handles commands sent to this Android application
      * @param pApp the app the commands are coming from
@@ -107,6 +117,20 @@ extern "C"
             {
                 auto engineApp = reinterpret_cast<SomeEngineRuntime::Application*>(pApp->userData);
                 engineApp->Run();
+
+                // get input state
+                if (pApp->textInputState)
+                {
+                    // process TextInput events.
+                    // ...
+                    // GameActivity_getTextInputState(pApp->activity,
+                    //                                GameTextInputGetStateCB, // App's event handler shown above.
+                    //                                &engineApp // Context to the GameTextInputGetStateCB function.
+                    // );
+
+                    // reset the textInputState flag
+                    pApp->textInputState = 0;
+                }
             }
         } while (!pApp->destroyRequested);
     }

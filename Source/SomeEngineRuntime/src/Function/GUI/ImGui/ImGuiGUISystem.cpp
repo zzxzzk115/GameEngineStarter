@@ -62,7 +62,35 @@ namespace SomeEngineRuntime
 
         // if on Android, set scale
 #if SOME_ENGINE_WINDOW_ABSTRACT_EGL && SOME_ENGINE_PLATFORM_ANDROID
-        style.ScaleAllSizes(3.0f);
+        // We load the default font with increased size to improve readability on many devices with "high" DPI.
+        // FIXME: Put some effort into DPI awareness.
+        // Important: when calling AddFontFromMemoryTTF(), ownership of font_data is transfered by Dear ImGui by default
+        // (deleted is handled by Dear ImGui), unless we set FontDataOwnedByAtlas=false in ImFontConfig
+        ImFontConfig font_cfg;
+        font_cfg.SizePixels = 22.0f;
+        io.Fonts->AddFontDefault(&font_cfg);
+        // void* font_data;
+        // int font_data_size;
+        // ImFont* font;
+        // font_data_size = GetAssetData("segoeui.ttf", &font_data);
+        // font = io.Fonts->AddFontFromMemoryTTF(font_data, font_data_size, 16.0f);
+        // IM_ASSERT(font != nullptr);
+        // font_data_size = GetAssetData("DroidSans.ttf", &font_data);
+        // font = io.Fonts->AddFontFromMemoryTTF(font_data, font_data_size, 16.0f);
+        // IM_ASSERT(font != nullptr);
+        // font_data_size = GetAssetData("Roboto-Medium.ttf", &font_data);
+        // font = io.Fonts->AddFontFromMemoryTTF(font_data, font_data_size, 16.0f);
+        // IM_ASSERT(font != nullptr);
+        // font_data_size = GetAssetData("Cousine-Regular.ttf", &font_data);
+        // font = io.Fonts->AddFontFromMemoryTTF(font_data, font_data_size, 15.0f);
+        // IM_ASSERT(font != nullptr);
+        // font_data_size = GetAssetData("ArialUni.ttf", &font_data);
+        // font = io.Fonts->AddFontFromMemoryTTF(font_data, font_data_size, 18.0f, nullptr,
+        // io.Fonts->GetGlyphRangesJapanese()); IM_ASSERT(font != nullptr);
+
+        // Arbitrary scale-up
+        // FIXME: Put some effort into DPI awareness
+        ImGui::GetStyle().ScaleAllSizes(3.0f);
 #endif
 
         // SetDarkThemeColors(); // you can set your own colors.

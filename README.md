@@ -25,8 +25,9 @@
 
 ## Features
 
-- **Cross-Platform**: Windows, macOS, Linux, ARM Linux (Raspberry Pi), Emscripten (WASM).
+- **Cross-Platform**: Windows, macOS, Linux, ARM Linux (Raspberry Pi), Emscripten (WASM) and Modern Android.
 - **Minimal & Popular Dependencies**: Only spdlog, glad, imgui, glfw, sdl2.
+    > For Android, we need [GameActivity](https://developer.android.com/games/agdk/game-activity) and EGL.
 - **Using XMake as Project Generator & Builder**: Combining the functionalities of various build tools, incorporating the speed of Ninja, and introducing customizable library repositories, results in a versatile and efficient build system.
 - **Minimal system implemented:** A simple cross-platform window is implemented using either GLFW or SDL2 paired with OpenGL. This provides a fundamental GL/GLES context for basic graphics operations.
 
@@ -113,22 +114,23 @@ xmake f -p wasm
 xmake -v -y
 ```
 
-### Build for Android (WIP)
+### Build for Android
 
-Currently, I made a demo that shows how to use xmake to build an Android Native project by using [GameActivity](https://developer.android.com/games/agdk/game-activity) and [xmake-gradle](https://github.com/xmake-io/xmake-gradle).
-
-After organizing code structures, I will update the engine for Android.
+Currently, I've made a demo that shows how to use xmake to build an Android Native project by using [GameActivity](https://developer.android.com/games/agdk/game-activity) and [xmake-gradle](https://github.com/xmake-io/xmake-gradle).
 
 Now you can build an Android demo by executing the:
 
 ```bash
 cd GameTemplate/Android/android
 ./gradlew app:assembleDebug
+# ./gradlew app:assembleRelease
 ```
 
 You may have to set the `JAVA_HOME` system environment.
 
 The generated APK file will be at `GameTemplate/Android/android/app/build/outputs/apk/{mode}`
+
+> The virtual keyboard is not working, which I'll fix later on.
 
 ### Build Options
 

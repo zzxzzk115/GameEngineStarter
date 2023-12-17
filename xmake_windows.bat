@@ -1,6 +1,6 @@
 @echo off
 
-cd Engine
+cd Source
 xmake -v -y
 
 pause
